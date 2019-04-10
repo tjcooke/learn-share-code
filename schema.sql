@@ -1,59 +1,26 @@
-create table users
-(
-    id serial primary key,
-    name varchar(100),
-    email varchar(200),
-    password varchar(500)
-);
 
-create table items
-(
-    id serial primary key,
-    title varchar(200),
-    description varchar(200),
-    photo varchar(200),
-    claimed varchar(20),
-    price varchar(200),
-    user_id integer references users(id)
-);
+-- create table javascript (
+--     id serial primary key,
+--     methods text
+-- )
 
-create table comments
-(
-    id serial primary key,
-    user_id integer references users(id),
-    item_id integer references items,
-    comment varchar(300)
-);
+-- create table python (
+--     id serial primary key,
+--     methods text
+-- )
+
+-- create table npm (
+--     id serial primary key,
+--     methods text
+-- )
+
+-- create table CSS (
+--     id serial primary key,
+--     methods text
+-- )
 
 
-create table javascript
-(
-    id serial primary key,
-    methods text,
-    news text,
-
-)
-create table python
-(
-    id serial primary key,
-    methods text,
-    news text
-)
-create table npm
-(
-    id serial primary key,
-    methods text,
-    news text
-)
-create table CSS
-(
-    id serial primary key,
-    methods text,
-    news text
-)
-
-create table methods
-(
+create table methods (
     id serial primary key,
     language text,
     method text,
@@ -61,29 +28,24 @@ create table methods
     snippet text
 )
 
-create table articles
-(
+create table articles (
     id serial primary key,
-    method text,
-    language text,
+    method_id integer references methods(id),
     article text
 )
 
-create table videos
-(
+create table videos (
     id serial primary key,
     link text,
-    language text,
-    method text
+    method_id integer references methods(id)
 )
 
--- create table notes (
---     id serial primary key,
---     user_id integer,
---     comment text,
---     method text,
---     language text
--- )
+create table notes (
+    id serial primary key,
+    user_id integer,
+    comment text,
+    method_id integer references methods(id)
+)
 
 
 -- create table q_a (
