@@ -9,7 +9,7 @@
 insert into methods
     (language, method, description, snippet)
 values
-    ('JavaScript', 'arr.forEach()',
+    ('JavaScript', 'forEach',
         '.forEach() requires an array, and will call a provided function for each value in that array. 
 function(currentValue, index, arr)
 It is required to pass this function the currentValue, the other two paramaters are optional.',
