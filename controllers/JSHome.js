@@ -2,8 +2,13 @@
 // gives javascript home view
 
 function JSHome(req, res) {
-
     // form here, use login as reference    
+    res.render('home', {
+        locals: {
+            email: '',
+            message: "you're on the homepage"
+        }
+    });
 }
 
 // 
