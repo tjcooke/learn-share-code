@@ -3,12 +3,16 @@
 
 function JSHome(req, res) {
     // form here, use login as reference    
-    res.render('home', {
+    res.render('postForm', {
         locals: {
             email: '',
-            message: "you're on the homepage"
+            message: "you're on the javascript view",
+            redirect: "/JavaScript"
         }
     });
+
+
+
 }
 
 // 
