@@ -2,8 +2,17 @@
 // gives javascript home view
 
 function JSHome(req, res) {
-
     // form here, use login as reference    
+    res.render('postForm', {
+        locals: {
+            email: '',
+            message: "you're on the javascript view",
+            redirect: "/JavaScript"
+        }
+    });
+
+
+
 }
 
 // 

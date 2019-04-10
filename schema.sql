@@ -25,28 +25,38 @@ create table methods (
     language text,
     method text,
     description text,
-    snippet text
-);
+    snippet text,
+    display text
+)
+;
 
 create table articles (
     id serial primary key,
     method_id integer references methods(id),
-    article text
+    article text,
+    display text
 );
 
 create table videos (
     id serial primary key,
     link text,
-    method_id integer references methods(id)
+    method_id integer references methods(id),
+    display text
 );
 
 create table notes (
     id serial primary key,
     user_id integer,
     comment text,
-    method_id integer references methods(id)
+    method_id integer references methods(id),
+    display text
 );
 
+create table moderators (
+    id serial primary key,
+    github_id integer,
+    permission text
+)
 
 -- create table q_a (
 --     id serial primary key,
