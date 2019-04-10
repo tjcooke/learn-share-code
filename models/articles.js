@@ -7,7 +7,7 @@ class Articles {
         this.method_id = method_id,
         this.article = article
     }
-    getByMethod(methodID){
+    static getByMethod(methodID){
         db.any(`select * from articles where method_id=$1`,methodID)
             .then((dataArray)=>{
                 return dataArray.map((data)=>{

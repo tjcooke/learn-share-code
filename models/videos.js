@@ -7,7 +7,7 @@ class Videos {
         this.link = link,
         this.method_id = method_id
     }
-    getByMethod(methodID){
+    static getByMethod(methodID){
         db.any(`select * from videos where method_id=$1`,methodID)
             .then((dataArray)=>{
                 return dataArray.map((data)=>{
