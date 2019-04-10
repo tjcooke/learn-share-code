@@ -1,8 +1,14 @@
 const CSSRoute = require('express').Router();
-const {CSSHome, CSSPost} = require('../controllers/CSSHome');
+const {CSSHome, CSSPost, CSSMethods, CSSMethodPage} = require('../controllers/CSSHome');
 
-JSRoute.get('/', CSSHome);
+CSSRoute.get('/', CSSHome);
 
-JSRoute.post('/', CSSPost);
+CSSRoute.post('/', CSSPost);
+
+CSSRoute.get('/methods', CSSMethods);
+
+CSSRoute.get('/method/:name', CSSMethodPage)
+
+
 
 module.exports = CSSRoute;

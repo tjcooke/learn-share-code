@@ -1,8 +1,12 @@
 const HTMLRoute = require('express').Router();
-const {HTMLHome, HTMLPost} = require('../controllers/HTMLHome');
+const {HTMLHome, HTMLPost, HTMLMethods, HTMLMethodPage} = require('../controllers/HTMLHome');
 
-JSRoute.get('/', HTMLHome);
+HTMLRoute.get('/', HTMLHome);
 
-JSRoute.post('/', HTMLPost);
+HTMLRoute.post('/', HTMLPost);
+
+HTMLRoute.get('/methods', HTMLMethods);
+
+HTMLRoute.get('/method/:name', HTMLMethodPage);
 
 module.exports = HTMLRoute;

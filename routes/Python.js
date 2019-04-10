@@ -1,8 +1,12 @@
 const PYRoute = require('express').Router();
-const {PYHome, PYPost} = require('../controllers/PYHome');
+const {PYHome, PYPost, PYMethods, PYMethodPage} = require('../controllers/PYHome');
 
-JSRoute.get('/', PYHome);
+PYRoute.get('/', PYHome);
 
-JSRoute.post('/', PYPost);
+PYRoute.post('/', PYPost);
+
+PYRoute.get('/methods', PYMethods);
+
+PYRoute.get('/method/:name', PYMethodPage)
 
 module.exports = PYRoute;
