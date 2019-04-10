@@ -28,7 +28,6 @@ VALUES
 
 insert into videos
     (link, method_id)
-ß
 VALUES
     ('https://www.youtube.com/watch?v=159EAISAxwg', 1)
 ;

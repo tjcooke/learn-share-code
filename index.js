@@ -12,9 +12,16 @@ app.use(helmet());
 const es6Renderer = require('express-es6-template-engine');
 const session = require('express-session');
 const fileStore = require('session-file-store')(session);
+
+
 const loginRouter = require('./routes/login')
-// const dashboardRouter = require('./routes/dashboard')
-const homeRouter = require('./routes/home')
+const homeRouter = require('./routes/home');
+const dashboardRouter = require('./routes/dashboard');
+const JSRouter = require('./routes/JavaScript');
+const PYRouter = require('./routes/Python');
+const NPMRouter = require('./routes/NPM');
+const CSSRouter = require('./routes/CSS');
+const HTMLRouter = require('./routes/HTML');
 
 app.use(express.urlencoded({ extended: true }));
 app.engine('html', es6Renderer);
@@ -26,10 +33,14 @@ app.use(session({
 }));
 
 
-app.use('/home', homeRouter);
-
+app.use('/home', homeRouter)
+app.use('/JavaScript', JSRouter);
+app.use('/Python', PYRouter);
+app.use('/NPM', NPMRouter);
+app.use('/CSS', CSSRouter);
+app.use('/HTML', HTMLRouter);
+app.use('/dashboard', dashboardRouter);
 app.use('/login', loginRouter);
-// app.use('/dashboard', dashboardRouter);
 
 app.listen(PORT, () => {
     console.log(`listening on port: ${PORT}`)
