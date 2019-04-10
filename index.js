@@ -25,8 +25,12 @@ app.use(session({
     secret: process.env.SESSION_SECRET
 }));
 
-
-app.use('/home', homeRouter);
+app.use('/JavaScript', JSRouter);
+app.use('/Python', PyRouter);
+app.use('/NPM', NPMRouter);
+app.use('/CSS', CSSRouter);
+app.use('/HTML', HTMLRouter);
+app.use('/dashboard', modDashboard);
 
 app.use('/login', loginRouter);
 // app.use('/dashboard', dashboardRouter);
