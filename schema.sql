@@ -28,20 +28,21 @@ create table methods (
     snippet text,
     display text
 )
+;
 
 create table articles (
     id serial primary key,
     method_id integer references methods(id),
     article text,
     display text
-)
+);
 
 create table videos (
     id serial primary key,
     link text,
     method_id integer references methods(id),
     display text
-)
+);
 
 create table notes (
     id serial primary key,
@@ -49,7 +50,7 @@ create table notes (
     comment text,
     method_id integer references methods(id),
     display text
-)
+);
 
 create table moderators (
     id serial primary key,
