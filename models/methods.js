@@ -1,25 +1,31 @@
 const db = require('./db');
 
 class Methods {
-    constructor(id, language, method, description, snippet){
+    constructor(id, language, method, description, snippet, display){
         this.id = id,
         this.language = language,
         this.method = method,
         this.description = description,
-        this.snippet = snippet
+        this.snippet = snippet,
+        this.display = display
+
     }
     static getAll(language){
         return db.any(`select * from methods where language=$1`,language)
             .then((dataArray)=>{
                 return dataArray.map((data)=>{
-                    return new Method(data.id, data.language, data.method, data.description, data.snippet)
+
+                    return new Method(data.id, data.language, data.method, data.description, data.snippet, data.display)
+
                 })
             })
     }
     static getByMethod(name){
-        return db.one(`select * from methods where method=$1`,name)
+        return db.one(`select * from methods where method=${name}`)
             .then((data)=>{
-                return new Method(data.id, data.language, data.method, data.description, data.snippet)
+
+                return new Method(data.id, data.language, data.method, data.description, data.snippet, data.display)
+
             })
     }
 }
