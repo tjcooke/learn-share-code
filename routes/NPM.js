@@ -1,8 +1,12 @@
 const NPMRoute = require('express').Router();
-const {NPMHome, NPMPost} = require('../controllers/NPMHome');
+const {NPMHome, NPMPost, NPMMethods, NPMMethodPage} = require('../controllers/NPMHome');
 
-JSRoute.get('/', NPMHome);
+NPMRoute.get('/', NPMHome);
 
-JSRoute.post('/', NPMPost);
+NPMRoute.post('/', NPMPost);
+
+NPMRoute.get('/methods', NPMMethods);
+
+NPMRoute.get('/method/:name', NPMMethodPage)
 
 module.exports = NPMRoute;
