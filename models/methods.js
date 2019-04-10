@@ -12,14 +12,14 @@ class Methods {
         return db.any(`select * from methods where language=$1`,language)
             .then((dataArray)=>{
                 return dataArray.map((data)=>{
-                    return new Method(data.id, data.language, data.method, data.description, data.snippet)
+                    return new Methods(data.id, data.language, data.method, data.description, data.snippet)
                 })
             })
     }
     static getByMethod(name){
-        return db.one(`select * from methods where method=$1`,name)
+        return db.one(`select * from methods where method=${name}`)
             .then((data)=>{
-                return new Method(data.id, data.language, data.method, data.description, data.snippet)
+                return new Methods(data.id, data.language, data.method, data.description, data.snippet)
             })
     }
 }

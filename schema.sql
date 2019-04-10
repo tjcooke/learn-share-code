@@ -26,26 +26,26 @@ create table methods (
     method text,
     description text,
     snippet text
-)
+);
 
 create table articles (
     id serial primary key,
     method_id integer references methods(id),
     article text
-)
+);
 
 create table videos (
     id serial primary key,
     link text,
     method_id integer references methods(id)
-)
+);
 
 create table notes (
     id serial primary key,
     user_id integer,
     comment text,
     method_id integer references methods(id)
-)
+);
 
 
 -- create table q_a (
