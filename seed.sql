@@ -23,7 +23,7 @@ insert into articles
 (method_id, article)
 VALUES
 (1,'https://www.w3schools.com/jsref/jsref_foreach.asp'),
-(1, 'JavaScript','https://coderwall.com/p/kvzbpa/don-t-use-array-foreach-use-for-instead')
+(1,'https://coderwall.com/p/kvzbpa/don-t-use-array-foreach-use-for-instead')
 ;
 
 insert into videos

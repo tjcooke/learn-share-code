@@ -14,6 +14,7 @@ const session = require('express-session');
 const fileStore = require('session-file-store')(session);
 const loginRouter = require('./routes/login')
 // const dashboardRouter = require('./routes/dashboard')
+const homeRouter = require('./routes/home')
 
 app.use(express.urlencoded({ extended: true }));
 app.engine('html', es6Renderer);
@@ -23,6 +24,9 @@ app.use(session({
     store: new fileStore(),
     secret: process.env.SESSION_SECRET
 }));
+
+
+app.use('/home', homeRouter);
 
 app.use('/login', loginRouter);
 // app.use('/dashboard', dashboardRouter);
