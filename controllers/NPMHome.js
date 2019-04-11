@@ -1,10 +1,15 @@
+const Methods = require('../models/methods');
 
-function NPMHome(req, res) {
+
+async function NPMHome(req, res) {
+    const NPMMethods = await Methods.getAll('NPM')
+
     // form here, use login as reference    
-    res.render('home', {
+    res.render('language-home', {
         locals: {
-            email: '',
-            message: "you're on the homepage",
+            language: 'NPM',
+            methods: NPMMethods,
+            message: "you're on the NPM homepage",
             redirect: "/NPM"
         }
     });
