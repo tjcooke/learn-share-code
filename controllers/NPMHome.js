@@ -4,9 +4,9 @@ const Methods = require('../models/methods');
 async function NPMHome(req, res) {
     let NPMMethods = await Methods.getAll('NPM')
 
-    NPMMethods = NPMMethods.filter((eaMethod)=>{
+    NPMMethods = NPMMethods.filter((eaMethod) => {
         return eaMethod.display === 'True'
-    }) 
+    })
     // form here, use login as reference    
     res.render('language-home', {
         locals: {
@@ -20,11 +20,23 @@ async function NPMHome(req, res) {
 
 // 
 
-function NPMPost(req, res) {
-
-    // if method exists, update content (snippet,desc,vid)
-    // else, create new methods with various content
-
+async function NPMMethodPage(req, res) {
+    let theMethod = await Methods.getById(req.params.id)
+    if (theMethod) {
+        console.log(theMethod.display)
+        if (theMethod.display === 'True') {
+            res.render('method', {
+                locals: {
+                    language: theMethod.method,
+                    method: theMethod
+                }
+            })
+        } else {
+            res.redirect('/NPM')
+        }
+    } else {
+        res.redirect('/NPM')
+    }
 }
 
 module.exports = { NPMHome, NPMPost }
