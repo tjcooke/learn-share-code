@@ -19,12 +19,16 @@ class Methods {
                 })
             })
     }
-    static getByMethod(name) {
-        return db.one(`select * from methods where method='${name}'`)
-            .then((data) => {
+
+    static getByMethod(name){
+        return db.one(`select * from methods where method='$1'`,name)
+            .then((data)=>{
+
+
                 return new Methods(data.id, data.language, data.method, data.description, data.snippet, data.display)
             })
     }
+
 
     static getById(id){
         return db.one(`select * from methods where id=$1`, id)

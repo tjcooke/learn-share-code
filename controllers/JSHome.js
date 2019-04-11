@@ -23,8 +23,15 @@ function JSPost(req, res) {
 
 }
 
-function JSMethodPage (req,res){
-    res.send('hello')
+async function JSMethodPage (req,res){
+    let theMethod = await Methods.getById(req.params.id)
+    console.log(theMethod)
+    res.render('method',{
+        locals: {
+            language:theMethod.method,
+            method:theMethod
+        }
+    })
 }
 
 module.exports = { JSHome, JSPost, JSMethodPage }
