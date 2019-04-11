@@ -22,9 +22,14 @@ describe('Methods models', () => {
         const theMethod = await methods.getByMethod('forEach');
         theMethod.should.be.an.instanceOf(methods);
     })
-    it('should be able to retrieve method by ID', async () => {
+    it('should be able to retrieve methods by id', async () => {
         const theId = await methods.getById(1);
+        console.log(theId)
         theId.should.be.an.instanceOf(methods)
     })
+    it('should be able to get all items by language', async () => {
+        const methodAll = await methods.getAll('JavaScript');
+        console.log(methodAll)
+        methodAll[0].should.be.an.instanceOf(methods)
+    })
 })
-console.log
