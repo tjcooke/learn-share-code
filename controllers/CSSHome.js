@@ -4,9 +4,9 @@ const Methods = require('../models/methods');
 async function CSSHome(req, res) {
     let CSSMethods = await Methods.getAll('CSS')
     // form here, use login as reference    
-    CSSMethods = CSSMethods.filter((eaMethod)=>{
+    CSSMethods = CSSMethods.filter((eaMethod) => {
         return eaMethod.display === 'True'
-    }) 
+    })
     res.render('language-home', {
         locals: {
             language: 'CSS',
@@ -26,8 +26,23 @@ function CSSPost(req, res) {
 
 }
 
-function CSSMethodPage(req, res) {
-    res.send('hello ')
+async function CSSMethodPage(req, res) {
+    let theMethod = await Methods.getById(req.params.id)
+    if (theMethod) {
+        console.log(theMethod.display)
+        if (theMethod.display === 'True') {
+            res.render('method', {
+                locals: {
+                    language: theMethod.method,
+                    method: theMethod
+                }
+            })
+        } else {
+            res.redirect('/CSS')
+        }
+    } else {
+        res.redirect('/CSS')
+    }
 }
 
 module.exports = { CSSHome, CSSPost, CSSMethodPage }
