@@ -1,7 +1,7 @@
 require('dotenv').config();
 const pgp = require('pg-promise')({
     query: e => {
-    console.log(e);
+    // console.log(e);
     }
 });
 
@@ -11,5 +11,8 @@ const options = {
 };
 
 const db = pgp(options);
+console.log(process.env.DB_HOST)
+console.log(process.env.DB_NAME)
+
 
 module.exports = db;

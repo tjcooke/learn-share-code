@@ -14,7 +14,6 @@ class Methods {
         return db.any(`select * from methods where language=$1`,language)
             .then((dataArray)=>{
                 return dataArray.map((data)=>{
-
                     return new Methods(data.id, data.language, data.method, data.description, data.snippet, data.display)
 
                 })

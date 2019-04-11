@@ -1,21 +1,20 @@
 
+const Methods = require('../models/methods');
 // gives javascript home view
 
-function JSHome(req, res) {
+async function JSHome(req, res) {
+    const jsMethods = await Methods.getAll('JavaScript')
     // form here, use login as reference    
-    res.render('postForm', {
+    res.render('language-home', {
         locals: {
-            email: '',
+            language:'JavaScript',
+            methods: jsMethods,
             message: "you're on the javascript view",
             redirect: "/JavaScript"
         }
     });
-
-
-
 }
 
-// 
 
 function JSPost(req, res) {
 
@@ -24,4 +23,8 @@ function JSPost(req, res) {
 
 }
 
-module.exports = { JSHome, JSPost }
+function JSMethodPage (req,res){
+    res.send('hello')
+}
+
+module.exports = { JSHome, JSPost, JSMethodPage }

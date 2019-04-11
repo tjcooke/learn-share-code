@@ -5,8 +5,8 @@ HTMLRoute.get('/', HTMLHome);
 
 HTMLRoute.post('/', HTMLPost);
 
-HTMLRoute.get('/methods', HTMLMethods);
+// HTMLRoute.get('/methods', HTMLMethods);
 
-HTMLRoute.get('/method/:name', HTMLMethodPage);
+// HTMLRoute.get('/method/:name', HTMLMethodPage);
 
 module.exports = HTMLRoute;
