@@ -1,9 +1,12 @@
+const Methods = require('../models/methods');
 
-function HTMLHome(req, res) {
+async function HTMLHome(req, res) {
+    const HTMLMethods = await Methods.getAll('HTML')
     // form here, use login as reference    
-    res.render('home', {
+    res.render('language-home', {
         locals: {
-            email: '',
+            language: 'HTML',
+            methods: HTMLMethods,
             message: "you're on the HTML homepage",
             redirect: "/HTML"
         }
@@ -19,5 +22,8 @@ function HTMLPost(req, res) {
 
 }
 
+function HTMLMethodPage(req, res) {
+    res.send('hello')
+}
 
-module.exports = { HTMLHome, HTMLPost }
+module.exports = { HTMLHome, HTMLPost, HTMLMethodPage }

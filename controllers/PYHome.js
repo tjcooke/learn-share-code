@@ -1,10 +1,13 @@
+const Methods = require('../models/methods');
 
-function PYHome(req, res) {
+async function PYHome(req, res) {
+    const PYMethods = await Methods.getAll('Python')
     // form here, use login as reference    
-    res.render('home', {
+    res.render('language-home', {
         locals: {
-            email: '',
-            message: "you're on the homepage",
+            language: 'Python',
+            methods: PYMethods,
+            message: "you're on the python homepage",
             redirect: "/Python"
         }
     });
@@ -19,7 +22,11 @@ function PYPost(req, res) {
 
 }
 
-module.exports = { PYHome, PYPost }
+function PYMethodPage(req, res) {
+    res.send('hello')
+}
+
+module.exports = { PYHome, PYPost, PYMethodPage }
 
 
 
