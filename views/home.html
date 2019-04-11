@@ -13,25 +13,57 @@
 </head>
 
 <body>
-  <div class="row col-12 d-flex justify-content-between bg-info">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Menu
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="JavaScript">Javascript</a>
-        <a class="dropdown-item" href="Python">Python</a>
-        <a class="dropdown-item" href="CSS">CSS</a>
-        <a class="dropdown-item" href="HTML">HTML</a>
-        <a class="dropdown-item" href="NPM">NPM</a>
-      </div>
+    <div class="row col-12 d-flex justify-content-between bg-info">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/home">Home</a>
+                <a class="dropdown-item" href="/JavaScript">Javascript</a>
+                <a class="dropdown-item" href="/Python">Python</a>
+                <a class="dropdown-item" href="/CSS">CSS</a>
+                <a class="dropdown-item" href="/HTML">HTML</a>
+                <a class="dropdown-item" href="/NPM">NPM</a>
+            </div>
+        </div>
+        <h1>Code-lingo</h1>
+        <form action="/login" method="GET">
+        <button type="submit" class="btn btn-primary">Login</button>
+        </form>
     </div>
-    <h1>Code-lingo</h1>
-    <form action="/login" method="GET">
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-  </div>
-
+    <div>
+        ${news.map((eaNews)=>{
+            return `
+            <div class="newsitem">
+                <div class="newsitem_inner">
+                    <div class="newsitem-Header">
+                        <span class="logo">
+                            <img src="${eaNews.urlToImage}">
+                        </span>
+                        <span class="date">
+                            <div>
+                                ${eaNews.source.name}
+                            </div>
+                            <div class="source_date">
+                                <span>
+                                    ${eaNews.publishedAt}
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <h4>
+                        <a href="${eaNews.url}">${eaNews.title}</a>
+                    </h4>
+                    <p class="news_summary">
+                        ${eaNews.description}
+                    </p>
+                </div>
+            </div>
+            
+            `
+        })}
+    </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
