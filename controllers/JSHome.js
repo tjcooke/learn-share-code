@@ -7,7 +7,7 @@ async function JSHome(req, res) {
     // form here, use login as reference    
     res.render('language-home', {
         locals: {
-            language:'JavaScript',
+            language: 'JavaScript',
             methods: jsMethods,
             message: "you're on the javascript view",
             redirect: "/JavaScript"
