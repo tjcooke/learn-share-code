@@ -5,8 +5,8 @@ PYRoute.get('/', PYHome);
 
 PYRoute.post('/', PYPost);
 
-PYRoute.get('/methods', PYMethods);
+// PYRoute.get('/methods', PYMethods);
 
-PYRoute.get('/method/:name', PYMethodPage)
+// PYRoute.get('/method/:name', PYMethodPage)
 
 module.exports = PYRoute;

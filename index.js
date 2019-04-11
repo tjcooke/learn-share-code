@@ -22,15 +22,20 @@ const PYRouter = require('./routes/Python');
 const NPMRouter = require('./routes/NPM');
 const CSSRouter = require('./routes/CSS');
 const HTMLRouter = require('./routes/HTML');
+const setupAuth = require('./auth');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.engine('html', es6Renderer);
 app.set('views', 'views');
 app.set('view engine', 'html');
+
 app.use(session({
     store: new fileStore(),
     secret: process.env.SESSION_SECRET
 }));
+
+setupAuth(app);
 
 
 
@@ -40,8 +45,8 @@ app.use('/Python', PYRouter);
 app.use('/NPM', NPMRouter);
 app.use('/CSS', CSSRouter);
 app.use('/HTML', HTMLRouter);
-app.use('/dashboard', dashboardRouter);
-app.use('/login', loginRouter);
+// app.use('/dashboard', dashboardRouter);
+// app.use('/login', loginRouter);
 
 app.listen(PORT, () => {
     console.log(`listening on port: ${PORT}`)
