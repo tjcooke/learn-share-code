@@ -2,8 +2,11 @@ const Methods = require('../models/methods');
 
 
 async function NPMHome(req, res) {
-    const NPMMethods = await Methods.getAll('NPM')
+    let NPMMethods = await Methods.getAll('NPM')
 
+    NPMMethods = NPMMethods.filter((eaMethod)=>{
+        return eaMethod.display === 'True'
+    }) 
     // form here, use login as reference    
     res.render('language-home', {
         locals: {

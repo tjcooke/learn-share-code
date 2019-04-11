@@ -2,8 +2,11 @@ const Methods = require('../models/methods');
 
 
 async function CSSHome(req, res) {
-    const CSSMethods = await Methods.getAll('CSS')
+    let CSSMethods = await Methods.getAll('CSS')
     // form here, use login as reference    
+    CSSMethods = CSSMethods.filter((eaMethod)=>{
+        return eaMethod.display === 'True'
+    }) 
     res.render('language-home', {
         locals: {
             language: 'CSS',
