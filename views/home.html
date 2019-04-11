@@ -33,36 +33,23 @@
         <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
-    <div>
+    <div class="col-12 d-flex flex-column align-items-center">
         ${news.map((eaNews)=>{
             return `
-            <div class="newsitem">
-                <div class="newsitem_inner">
-                    <div class="newsitem-Header">
-                        <span class="logo">
-                            <img src="${eaNews.urlToImage}">
-                        </span>
-                        <span class="date">
-                            <div>
-                                ${eaNews.source.name}
-                            </div>
-                            <div class="source_date">
-                                <span>
-                                    ${eaNews.publishedAt}
-                                </span>
-                            </div>
-                        </span>
-                    </div>
-                    <h4>
+            <div>
+                <br>
+            </div>
+            <div class="media col-8">
+                <img class="d-flex mr-3 img-thumbnail col-2" src="${eaNews.urlToImage}">
+                <div class="media-body">
+                    <h5 class="mt-0 font-weight-bold">
                         <a href="${eaNews.url}">${eaNews.title}</a>
-                    </h4>
-                    <p class="news_summary">
-                        ${eaNews.description}
-                    </p>
+                    </h5>
+                    ${eaNews.description}
                 </div>
             </div>
             `
-        })}
+        }).join('')}
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
