@@ -1,8 +1,9 @@
-// const dashboardRoute = require('express').Router();
-// const {dashboardPage, dashboardPost} = require('../controllers/dashboard');
+const dashboardRoute = require('express').Router();
+const {dashboardPage, dashboardPost} = require('../controllers/dashboard');
 
-// dashboardRoute.get('/', dashboardPage)
+dashboardRoute.get('/', dashboardPage)
 
-// dashboardRoute.post('/',dashboardPost)
+dashboardRoute.post('/',dashboardPost)
 
-// module.exports = dashboardRoute;
+module.exports = dashboardRoute;
+

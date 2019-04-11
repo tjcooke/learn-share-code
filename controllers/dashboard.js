@@ -1,8 +1,10 @@
 
 
-function dashboard(req,res){
-    return {}
+function dashboardPage(req,res){
 
 }
+function dashboardPost (req,res){
+    
+}
 
-module.exports = dashboard;
+module.exports =  {dashboardPage, dashboardPost} ;

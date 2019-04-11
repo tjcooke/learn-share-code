@@ -37,6 +37,9 @@ app.use(session({
 
 setupAuth(app);
 
+app.get('/',(req,res)=>{
+    res.redirect('/home')
+})
 
 
 app.use('/home', homeRouter)
@@ -45,7 +48,7 @@ app.use('/Python', PYRouter);
 app.use('/NPM', NPMRouter);
 app.use('/CSS', CSSRouter);
 app.use('/HTML', HTMLRouter);
-// app.use('/dashboard', dashboardRouter);
+app.use('/dashboard', dashboardRouter);
 // app.use('/login', loginRouter);
 
 app.listen(PORT, () => {
