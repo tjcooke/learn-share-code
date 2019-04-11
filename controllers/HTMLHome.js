@@ -1,8 +1,11 @@
 const Methods = require('../models/methods');
 
 async function HTMLHome(req, res) {
-    const HTMLMethods = await Methods.getAll('HTML')
-    // form here, use login as reference    
+    let HTMLMethods = await Methods.getAll('HTML')
+    // form here, use login as reference   
+    HTMLMethods = HTMLMethods.filter((eaMethod)=>{
+        return eaMethod.display === 'True'
+    }) 
     res.render('language-home', {
         locals: {
             language: 'HTML',

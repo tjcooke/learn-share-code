@@ -33,7 +33,7 @@ class Methods {
     static getById(id){
         return db.one(`select * from methods where id=$1`, id)
             .then((methodData) => {
-                const methodInstance = new Methods(methodData.id, methodData.language, methodData.method, methodData.description, methodData.snippet)
+                const methodInstance = new Methods(methodData.id, methodData.language, methodData.method, methodData.description, methodData.snippet, methodData.display)
                 return methodInstance
         })
         .catch(() => {

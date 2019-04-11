@@ -1,7 +1,10 @@
 const Methods = require('../models/methods');
 
 async function PYHome(req, res) {
-    const PYMethods = await Methods.getAll('Python')
+    let PYMethods = await Methods.getAll('Python')
+    PYMethods = PYMethods.filter((eaMethod)=>{
+        return eaMethod.display === 'True'
+    }) 
     // form here, use login as reference    
     res.render('language-home', {
         locals: {
