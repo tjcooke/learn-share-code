@@ -20,12 +20,22 @@ class Methods {
             })
     }
     static getByMethod(name){
-        return db.one(`select * from methods where method=${name}`)
+        return db.one(`select * from methods where method='${name}'`)
             .then((data)=>{
 
                 return new Methods(data.id, data.language, data.method, data.description, data.snippet, data.display)
 
             })
+    }
+    static getById(Id){
+        return db.one(`select * from users where id=${id}`)
+        .then((methodData) => {
+            const methodInstance = new Methods(methodData.id, methodData.language, methodData.method, methodData.descriptionl, methodData.snippet)
+            return methodInstance
+        })
+        .catch(() => {
+            return null;
+        })
     }
 }
 
