@@ -5,9 +5,9 @@ CSSRoute.get('/', CSSHome);
 
 CSSRoute.post('/', CSSPost);
 
-CSSRoute.get('/methods', CSSMethods);
+// CSSRoute.get('/methods', CSSMethods);
 
-CSSRoute.get('/method/:name', CSSMethodPage)
+// CSSRoute.get('/method/:name', CSSMethodPage)
 
 
 

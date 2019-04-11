@@ -5,8 +5,6 @@ JSRoute.get('/', JSHome);
 
 JSRoute.post('/', JSPost);
 
-JSRoute.get('/methods', JSMethods);
-
-JSRoute.get('/method/:name', JSMethodPage)
+JSRoute.get('/:id', JSMethodPage)
 
 module.exports = JSRoute;
