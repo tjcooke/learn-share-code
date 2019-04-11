@@ -39,5 +39,5 @@ async function NPMMethodPage(req, res) {
     }
 }
 
-module.exports = { NPMHome, NPMPost }
+module.exports = { NPMHome, NPMMethodPage }
 
