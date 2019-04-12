@@ -14,7 +14,7 @@ const session = require('express-session');
 const fileStore = require('session-file-store')(session);
 
 
-const loginRouter = require('./routes/login')
+const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/home');
 const dashboardRouter = require('./routes/dashboard');
 const JSRouter = require('./routes/JavaScript');

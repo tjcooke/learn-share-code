@@ -27,18 +27,28 @@ create table methods (
     description text,
     snippet text,
     display text
-)
-;
+);
+create table method_edits (
+    id serial primary key,
+    method_id integer references methods(id),
+    language text,
+    method text,
+    description text,
+    snippet text,
+    display text
+);
 
 create table articles (
     id serial primary key,
     method_id integer references methods(id),
+    method_name text,
     article text,
     display text
 );
 
 create table videos (
     id serial primary key,
+    method_name text,
     link text,
     method_id integer references methods(id),
     display text
@@ -52,11 +62,12 @@ create table notes (
     display text
 );
 
+
 create table moderators (
     id serial primary key,
     github_id integer,
     permission text
-)
+);
 
 -- create table q_a (
 --     id serial primary key,
