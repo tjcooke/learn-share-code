@@ -25,7 +25,7 @@ class Articles {
         returning id, article
         `, [method_id,method_name, article, display])
         .then((data)=>{
-            console.log(data)
+
             return data.id
         });
     }

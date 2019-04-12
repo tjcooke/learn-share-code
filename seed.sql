@@ -72,7 +72,7 @@ VALUES
 insert into videos
     (link, method_id, display)
 VALUES
-    ('https://www.youtube.com/watch?v=159EAISAxwg', 1, 'True')
+    ('https://www.youtube.com/embed/159EAISAxwg', 12, 'True')
 ;
 -- Banana = BananaPeel
 -- Stevie = CoolGuy420

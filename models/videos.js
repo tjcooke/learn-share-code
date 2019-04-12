@@ -9,7 +9,7 @@ class Videos {
         this.display = display
     }
     static getByMethod(methodID){
-        db.any(`select * from videos where method_id=$1`,methodID)
+        return db.any(`select * from videos where method_id=$1`,methodID)
             .then((dataArray)=>{
                 return dataArray.map((data)=>{
                     return new Videos(data.id,  data.link, data.method_id, data.display)
@@ -25,7 +25,7 @@ class Videos {
         returning id, method_name
         `, [method_name, link, method_id, display])
         .then((data)=>{
-            console.log(data)
+
             return data.id
         });
     }

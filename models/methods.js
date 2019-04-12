@@ -20,7 +20,7 @@ class Methods {
         returning id, method
         `, [method_id, method, language, description, snippet, display])
         .then((data)=>{
-            console.log(data)
+
             return data.id
         });
     }
