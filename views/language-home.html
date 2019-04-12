@@ -33,45 +33,63 @@
         <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
-    <div>
-        ${methods.map((eaMethod)=>{
-        return `
-        <form action="/JavaScript/${eaMethod.id}" method="GET">
-            <button type="submit" class="btn btn-dark">
-                ${eaMethod.method}
-            </button>
-        </form>
-        `
-        }).join()}
+    <div class="col-12 d-flex justify-content-center p-5">
+        <div class="col-6 d-flex flex-wrap">
+            ${methods.map((eaMethod)=>{
+            return `
+            <form action="/JavaScript/${eaMethod.id}" method="GET">
+                <button type="submit" class="btn btn-dark m-2">
+                    ${eaMethod.method}
+                </button>
+            </form>
+            `
+            }).join('')}
+        </div>
     </div>
 <form action="/login" method="POST" class="col-12">
     <div class="row">
         <div class="form-group col-12 d-flex justify-content-center">
             <div class="col-4">
-                <label for="methods">Method</label>
-                <input value="" type="" name="" class="form-control" id="exampleMethod"
-                    aria-describedby="emailHelp" placeholder="Enter method">
 
+                <div class="form-check">
+                        <input class="form-check-input" type="radio" name="method" value="option1" checked>
+                        <div class="form-group">
+                            <label for="method">Method</label>
+                            <select class="form-control">
+                            ${methods.map((eaMethod)=>{
+                                return `
+                                <option>${eaMethod.method}</option>
+                                `
+                            }).join('')}
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="method" value="option1">
+                    <label for="methods">New Method</label>
+                    <input value="" type="method" name="method" class="form-control" id="exampleMethod"
+                        aria-describedby="emailHelp" placeholder="Enter method">
+                </div>
+                
                 <label for="description">Description</label>
-                <input value="" type="" name="" class="form-control" id="exampleDescription"
-                    aria-describedby="descriptionHelp" placeholder="Enter a description">
+                <textarea type="description" name="description"class="form-control" rows="4" placeholder="Enter a description"></textarea>
 
                 <label for="snippet">Code snippet</label>
-                <input value="" type="" name="" class="form-control" id="exampleSnippet"
-                    aria-describedby="snippetHelp" placeholder="Enter a code snippet">
-                   
-                <label for="article">Articles</label>
-                <input value="" type="" name="" class="form-control" id="exampleArticles"
-                    aria-describedby="snippetArticles" placeholder="Enter an article URL">
+                <textarea type="snippet" name="snippet" placeholder="Enter a code snippet" class="form-control" rows="3"></textarea>
 
-                <label for="aideos">Videos</label>
-                <input value="" type="" name="" class="form-control" id="exampleVideos"
+                <label for="article">Article</label>
+                <input value="" type="article" name="article" class="form-control" id="exampleArticles"
+                    aria-describedby="snippetArticles" placeholder="Enter an article URL">
+                
+                <label for="aideos">Video</label>
+                <input value="" type="video" name="video" class="form-control" id="exampleVideos"
                     aria-describedby="snippetVideos" placeholder="Enter a video URL">
-                <div class="row">
+                
+                <div>
                     <br>
-                    
                 </div>
-                    
                 <div class="form-group col-12 d-flex justify-content-center padding-top-s">
                     <button type="submit" class="btn btn-primary col-12">Submit</button>
                 </div>

@@ -29,7 +29,6 @@ function JSPost(req, res) {
 async function JSMethodPage (req,res){
     let theMethod = await Methods.getById(req.params.id)
     if(theMethod){
-        console.log(theMethod.display)
         if(theMethod.display === 'True'){
             res.render('method',{
                 locals: {

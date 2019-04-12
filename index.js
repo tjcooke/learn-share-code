@@ -37,9 +37,7 @@ app.use(session({
 
 setupAuth(app);
 
-app.get('/',(req,res)=>{
-    res.redirect('/home')
-})
+app.use('/',homeRouter)
 
 
 app.use('/home', homeRouter)
