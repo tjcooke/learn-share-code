@@ -16,6 +16,19 @@ class Videos {
                 })
             })
     }
+    static add(method_name, link, method_id, display){
+        return db.one(`
+        insert into videos
+        (method_name, link, method_id, display)
+        values
+        ($1, $2, $3, $4)
+        returning id, method_name
+        `, [method_name, link, method_id, display])
+        .then((data)=>{
+            console.log(data)
+            return data.id
+        });
+    }
 }
 
 module.exports = Videos;

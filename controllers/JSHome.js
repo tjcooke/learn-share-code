@@ -1,5 +1,7 @@
 
 const Methods = require('../models/methods');
+const Articles = require('../models/articles');
+const Videos = require('../models/videos');
 // gives javascript home view
 
 async function JSHome(req, res) {
@@ -18,9 +20,25 @@ async function JSHome(req, res) {
     });
 }
 
+async function JSPost(req, res) {
+    const userInput = req.body
+    
+    console.log(userInput)
+    if (userInput['method-selection'] === 'option1'){
+        res.send('hello option1')
+    }else if (userInput['method-selection'] === 'option2'){
+        let response = await Methods.add(null,userInput.option2,'JavaScript',userInput.description,userInput.snippet,'False')
+        console.log(response)
+        console.log('===========')
+        let response2 = await Articles.add(null, userInput.option2, userInput.article, 'False')
+        console.log(response2)
+        let response3 = await Videos.add(userInput.option2, userInput.video, null, 'False')
+        console.log(response3)
+        res.send('you did it!')
+    }
+    
 
-function JSPost(req, res) {
-
+    res.send('hello')
     // if method exists, update content (snippet,desc,vid)
     // else, create new methods with various content
 

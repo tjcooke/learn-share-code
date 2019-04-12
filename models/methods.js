@@ -2,7 +2,7 @@ const db = require('./db');
 
 class Methods {
     constructor(id, language, method, description, snippet, display) {
-        this.id = id,
+            this.id = id,
             this.language = language,
             this.method = method,
             this.description = description,
@@ -10,6 +10,21 @@ class Methods {
             this.display = display
 
     }
+
+    static add(method_id, method, language, description, snippet, display){
+        return db.one(`
+        insert into method_edits
+        (method_id, method, language, description, snippet, display)
+        values
+        ($1, $2, $3, $4, $5, $6)
+        returning id, method
+        `, [method_id, method, language, description, snippet, display])
+        .then((data)=>{
+            console.log(data)
+            return data.id
+        });
+    }
+
     static getAll(language) {
         return db.any(`select * from methods where language=$1`, language)
             .then((dataArray) => {
