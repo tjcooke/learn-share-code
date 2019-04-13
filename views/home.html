@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <div class="row col-12 d-flex justify-content-between bg-info">
-        <div class="dropdown">
+    <div class="col-12 d-flex justify-content-between bg-info">
+        <div class="dropdown d-flex align-items-center">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Menu
             </button>
@@ -29,9 +29,11 @@
             </div>
         </div>
         <h1>Code-lingo</h1>
-        <form action="/login" method="GET">
-        <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+        <div class="d-flex align-items-center">
+            <form action="/login" method="GET">
+            <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
     </div>
     <div class="col-12 d-flex flex-column align-items-center">
         ${news.map((eaNews)=>{
