@@ -16,6 +16,19 @@ class Articles {
                 })
             })
     }
+    static add(method_id, method_name, article, display){
+        return db.one(`
+        insert into articles
+        (method_id, method_name, article, display)
+        values
+        ($1, $2, $3, $4)
+        returning id, article
+        `, [method_id,method_name, article, display])
+        .then((data)=>{
+
+            return data.id
+        });
+    }
 }
 
 module.exports = Articles;

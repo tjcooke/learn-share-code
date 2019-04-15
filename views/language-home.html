@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-native-elements/1.1.0/bundle.js"></script>
+
+
+    <title>Home</title>
+</head>
+
+<body>
+<div class="col-12 d-flex justify-content-between bg-info">
+    <div class="dropdown d-flex align-items-center">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/home">Home</a>
+            <a class="dropdown-item" href="/JavaScript">Javascript</a>
+            <a class="dropdown-item" href="/Python">Python</a>
+            <a class="dropdown-item" href="/CSS">CSS</a>
+            <a class="dropdown-item" href="/HTML">HTML</a>
+            <a class="dropdown-item" href="/NPM">NPM</a>
+        </div>
+    </div>
+    <h1>${language}</h1>
+    <div class="d-flex align-items-center">
+        <form action="/login" method="GET">
+        <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</div>
+<div class="col-12 d-flex justify-content-center p-5">
+    <div class="col-6 d-flex flex-wrap">
+        ${methods.map((eaMethod)=>{
+        return `
+        <form action="/JavaScript/${eaMethod.id}" method="GET">
+            <button type="submit" class="btn btn-dark m-2">
+                ${eaMethod.method}
+            </button>
+        </form>
+        `
+        }).join('')}
+    </div>
+</div>
+<form action="/${language}" method="POST" class="col-12">
+    <div class="row">
+        <div class="form-group col-12 d-flex justify-content-center">
+            <div class="col-4">
+
+                <div class="form-check">
+                        <input class="form-check-input" type="radio" name="method-selection" id="option1" value="option1" checked>
+                        <div class="form-group">
+                            <label for="option1">Method</label>
+                            <select class="form-control" name="option1">
+                            ${methods.map((eaMethod)=>{
+                                return `
+                                <option>${eaMethod.method}</option>
+                                `
+                            }).join('')}
+                            </select>
+                        </div>
+
+
+                    <input class="form-check-input" type="radio" id="option2" name="method-selection" value="option2">
+                    <label for="option2">New Method</label>
+                    <input value="" type="option2" name="option2" class="form-control"
+                        aria-describedby="emailHelp" placeholder="Enter a method">
+                </div>
+                
+                <label for="description">Description</label>
+                <textarea type="description" name="description"class="form-control" rows="4" placeholder="Enter a description"></textarea>
+
+                <label for="snippet">Code snippet</label>
+                <textarea type="snippet" name="snippet" placeholder="Enter a code snippet" class="form-control" rows="3"></textarea>
+
+                <label for="article">Article</label>
+                <input value="" type="article" name="article" class="form-control" id="exampleArticles"
+                    aria-describedby="snippetArticles" placeholder="Enter an article URL">
+                
+                <label for="videos">Video</label>
+                <input value="" type="video" name="video" class="form-control" id="exampleVideos"
+                    aria-describedby="snippetVideos" placeholder="Enter a video URL">
+                
+                <div>
+                    <br>
+                </div>
+                <div class="form-group col-12 d-flex justify-content-center padding-top-s">
+                    <button type="submit" class="btn btn-primary col-12">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

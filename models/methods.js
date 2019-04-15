@@ -1,37 +1,55 @@
 const db = require('./db');
 
 class Methods {
-    constructor(id, language, method, description, snippet, display){
-        this.id = id,
-        this.language = language,
-        this.method = method,
-        this.description = description,
-        this.snippet = snippet,
-        this.display = display
+    constructor(id, language, method, description, snippet, display) {
+            this.id = id,
+            this.language = language,
+            this.method = method,
+            this.description = description,
+            this.snippet = snippet,
+            this.display = display
 
     }
-    static getAll(language){
-        return db.any(`select * from methods where language=$1`,language)
-            .then((dataArray)=>{
-                return dataArray.map((data)=>{
+
+    static add(method_id, method, language, description, snippet, display){
+        return db.one(`
+        insert into method_edits
+        (method_id, method, language, description, snippet, display)
+        values
+        ($1, $2, $3, $4, $5, $6)
+        returning id, method
+        `, [method_id, method, language, description, snippet, display])
+        .then((data)=>{
+
+            return data.id
+        });
+    }
+
+    static getAll(language) {
+        return db.any(`select * from methods where language=$1`, language)
+            .then((dataArray) => {
+                return dataArray.map((data) => {
                     return new Methods(data.id, data.language, data.method, data.description, data.snippet, data.display)
 
                 })
             })
     }
+
     static getByMethod(name){
-        return db.one(`select * from methods where method='${name}'`)
+        return db.one(`select * from methods where method='$1'`,name)
             .then((data)=>{
 
-                return new Methods(data.id, data.language, data.method, data.description, data.snippet, data.display)
 
+                return new Methods(data.id, data.language, data.method, data.description, data.snippet, data.display)
             })
     }
-    static getById(Id){
-        return db.one(`select * from users where id=${id}`)
-        .then((methodData) => {
-            const methodInstance = new Methods(methodData.id, methodData.language, methodData.method, methodData.descriptionl, methodData.snippet)
-            return methodInstance
+
+
+    static getById(id){
+        return db.one(`select * from methods where id=$1`, id)
+            .then((methodData) => {
+                const methodInstance = new Methods(methodData.id, methodData.language, methodData.method, methodData.description, methodData.snippet, methodData.display)
+                return methodInstance
         })
         .catch(() => {
             return null;
