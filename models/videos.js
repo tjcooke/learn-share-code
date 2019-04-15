@@ -12,10 +12,21 @@ class Videos {
         return db.any(`select * from videos where method_id=$1`,methodID)
             .then((dataArray)=>{
                 return dataArray.map((data)=>{
-                    return new Videos(data.id,  data.link, data.method_id, data.display)
+                    return new Videos(data.id, data.link, data.method_id, data.display)
                 })
             })
     }
+
+    static getByMethodName(name){
+        return db.any(`select * from videos where method_name=$1`,name)
+            .then((dataArray)=>{
+                return dataArray.map((data)=>{
+                    return new Videos(data.id, data.link, data.method_id, data.display)
+                })
+            })
+    }
+
+
     static add(method_name, link, method_id, display){
         return db.one(`
         insert into videos
@@ -28,6 +39,14 @@ class Videos {
 
             return data.id
         });
+    }
+    static getDisplayFalse(){
+        db.any(`select * from videos where display='False'`)
+            .then((dataArray)=>{
+                return dataArray.map((data)=>{
+                    return new Videos(data.id, data.link, data.method_id, data.display)
+                })
+            })
     }
 }
 

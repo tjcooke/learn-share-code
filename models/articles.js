@@ -29,6 +29,14 @@ class Articles {
             return data.id
         });
     }
+    static getDisplayFalse(){
+        db.any(`select * from articles where display='False'`)
+            .then((dataArray)=>{
+                return dataArray.map((data)=>{
+                    return new Articles(data.id, data.method_id, data.article, data.display)
+                })
+            })
+    }
 }
 
 module.exports = Articles;

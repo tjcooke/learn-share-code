@@ -11,20 +11,6 @@ class Methods {
 
     }
 
-    static add(method_id, method, language, description, snippet, display){
-        return db.one(`
-        insert into method_edits
-        (method_id, method, language, description, snippet, display)
-        values
-        ($1, $2, $3, $4, $5, $6)
-        returning id, method
-        `, [method_id, method, language, description, snippet, display])
-        .then((data)=>{
-
-            return data.id
-        });
-    }
-
     static getAll(language) {
         return db.any(`select * from methods where language=$1`, language)
             .then((dataArray) => {
@@ -36,7 +22,7 @@ class Methods {
     }
 
     static getByMethod(name){
-        return db.one(`select * from methods where method='$1'`,name)
+        return db.one(`select * from methods where method=$1`,name)
             .then((data)=>{
 
 
