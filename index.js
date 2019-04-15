@@ -14,7 +14,7 @@ const session = require('express-session');
 const fileStore = require('session-file-store')(session);
 
 
-const loginRouter = require('./routes/login')
+const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/home');
 const dashboardRouter = require('./routes/dashboard');
 const JSRouter = require('./routes/JavaScript');
@@ -37,9 +37,7 @@ app.use(session({
 
 setupAuth(app);
 
-app.get('/',(req,res)=>{
-    res.redirect('/home')
-})
+app.use('/',homeRouter)
 
 
 app.use('/home', homeRouter)

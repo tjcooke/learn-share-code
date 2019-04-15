@@ -6,4 +6,3 @@ dashboardRoute.get('/', dashboardPage)
 dashboardRoute.post('/',dashboardPost)
 
 module.exports = dashboardRoute;
-
