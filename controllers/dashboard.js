@@ -84,6 +84,7 @@ async function dashboardPost(req, res) {
             await Methods.add(newMethod.language, newMethod.method, theDescription, theSnippet, 'True')
         }
     }
+    const theNewMethod = await Methods.getByMethod(methodName)
 
     const inputKeys = Object.keys(req.body)
 
@@ -97,6 +98,7 @@ async function dashboardPost(req, res) {
                 console.log(videoID)
                 let theVideo = await Videos.getById(videoID)
                 theVideo.display = 'True'
+                theVideo.method_id = theNewMethod.id
                 console.log('SAVING')
                 await theVideo.save()
             }
