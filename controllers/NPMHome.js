@@ -1,5 +1,7 @@
 const Methods = require('../models/methods');
-
+const Method_edits = require('../models/method.edits');
+const Articles = require('../models/articles');
+const Videos = require('../models/videos');
 
 async function NPMHome(req, res) {
     let NPMMethods = await Methods.getAll('NPM')
@@ -19,16 +21,26 @@ async function NPMHome(req, res) {
 }
 
 // 
+async function NPMPost(req, res) {
+
+}
+
 
 async function NPMMethodPage(req, res) {
     let theMethod = await Methods.getById(req.params.id)
+    let theVideos = await Videos.getByMethod(req.params.id)
+    theVideos = theVideos.filter((eaVideo) => {
+        return eaVideo.display === 'True'
+    })
+    console.log(theVideos)
     if (theMethod) {
         console.log(theMethod.display)
         if (theMethod.display === 'True') {
             res.render('method', {
                 locals: {
                     language: theMethod.method,
-                    method: theMethod
+                    method: theMethod,
+                    videos: theVideos
                 }
             })
         } else {
@@ -39,5 +51,5 @@ async function NPMMethodPage(req, res) {
     }
 }
 
-module.exports = { NPMHome, NPMMethodPage }
+module.exports = { NPMHome, NPMPost, NPMMethodPage }
 

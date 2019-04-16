@@ -1,4 +1,7 @@
 const Methods = require('../models/methods');
+const Method_edits = require('../models/method_edits');
+const Articles = require('../models/articles');
+const Videos = require('../models/videos');
 
 
 async function CSSHome(req, res) {
@@ -28,13 +31,19 @@ function CSSPost(req, res) {
 
 async function CSSMethodPage(req, res) {
     let theMethod = await Methods.getById(req.params.id)
+    let theVideos = await Videos.getByMethod(req.params.id)
+    theVideos = theVideos.filter((eaVideo) => {
+        return eaVideo.display === 'True'
+    })
+    console.log(theVideos)
     if (theMethod) {
         console.log(theMethod.display)
         if (theMethod.display === 'True') {
             res.render('method', {
                 locals: {
                     language: theMethod.method,
-                    method: theMethod
+                    method: theMethod,
+                    videos: theVideos
                 }
             })
         } else {
