@@ -41,6 +41,30 @@ class Methods {
             return null;
         })
     }
+    save(){
+        // use .result when you might want a report about 
+        // how many rows got affected
+        return db.result(`
+        update methods set
+            language='${this.language}',
+            method='${this.method}',
+            description='${this.description}',
+            snippet='${this.snippet}',
+            where id = ${this.id}
+        `)
+    }
+    static add(language, method, description, snippet, display){
+        return db.one(`
+        insert into methods
+        (language, method, description, snippet, display)
+        values
+        ($1, $2, $3, $4, $5)
+        returning id, first_name
+        `, [language, method, description, snippet, display])
+        .then((data)=>{
+            return data.id
+        });
+    }
 }
 
 module.exports = Methods;
