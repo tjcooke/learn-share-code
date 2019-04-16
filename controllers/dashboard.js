@@ -28,10 +28,8 @@ async function dashboardMethod(req,res){
         locals:{
             method:method,
             videos:videos
-
         }
     })
-
 }
 
 
@@ -49,7 +47,7 @@ async function dashboardPost (req,res){
         if (snippetSelect === 'on'){
             theMethod.snippet = snippet
         }
-    // save theMethod to database
+    theMethod.save()
     }else{
         const newMethod = await Method_edits.getByMethodName(methodName)
         const theDescription = null
@@ -61,13 +59,17 @@ async function dashboardPost (req,res){
         }
 
         // add new method to database
+    await Methods.add(newMethod.language, newMethod.method, theDescription, theSnippet, 'True')
     }
 
     const inputKeys = Object.keys(req.body)
     for (let i = 3; i < inputKeys.length; i++){
         if (req.body[`${inputKeys[i]}`] === 'on'){
             req.body[`${inputKeys[i+1]}`]
-            // add the video to the videos 'display TRUE'
+            let videoID = inputKeys[i+1].substring(inputKeys[i+1].indexOf(':') + 1, inputKeys[i+1].length)
+            let theVideo = await Videos.getById(videoID)
+            theVideo.display = 'True'
+            theVideo.save()
         }
     }
     // remove from database if video display 'False'

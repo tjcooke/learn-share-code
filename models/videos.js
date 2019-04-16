@@ -16,6 +16,16 @@ class Videos {
                 })
             })
     }
+    static getById(id){
+        return db.one(`select * from videos where id=$1`, id)
+            .then((methodData) => {
+                const methodInstance = new Videos(methodData.id, methodData.link, methodData.method_id, methodData.display)
+                return methodInstance
+        })
+        .catch(() => {
+            return null;
+        })
+    }
 
     static getByMethodName(name){
         return db.any(`select * from videos where method_name=$1`,name)
@@ -47,6 +57,17 @@ class Videos {
                     return new Videos(data.id, data.link, data.method_id, data.display)
                 })
             })
+    }
+    save(){
+        // use .result when you might want a report about 
+        // how many rows got affected
+        return db.result(`
+        update methods set
+            link='${this.link}',
+            method_id='${this.method_id}',
+            display='${this.display}',
+            where id = ${this.id}
+        `)
     }
 }
 
