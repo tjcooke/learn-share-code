@@ -7,7 +7,7 @@ CSSRoute.post('/', CSSPost);
 
 // CSSRoute.get('/methods', CSSMethods);
 
-// CSSRoute.get('/method/:name', CSSMethodPage)
+CSSRoute.get('/:id', CSSMethodPage)
 
 
 

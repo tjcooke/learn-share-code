@@ -2,23 +2,37 @@ const Method_edits = require('../models/method_edits')
 const Videos = require('../models/videos')
 const Methods = require('../models/methods')
 const Articles = require('../models/articles')
-
+const Moderators = require('../models/moderators')
 
 async function dashboardPage(req, res) {
-    const clientID = process.env.client_id
+    const clientID = req.session.passport.user
+    console.log(clientID)
+    let theMod = null
+    if(clientID){
+        theMod = await Moderators.getByGithubID(clientID)
+    }
 
-    console.log(`inside dashboardPage func ${clientID}`)
-
-    let methodEdits = await Method_edits.getAll()
-    let videoEdits = await Videos.getDisplayFalse()
-    let articleEdits = await Articles.getDisplayFalse()
-    res.render('dashboard', {
-        locals: {
-            methodsEdits: methodEdits,
-            videos: videoEdits,
-            articles: articleEdits
+    console.log(`inside dashboardPage func ${req.isAuthenticated()}`)
+    if(theMod){
+        if(theMod.permission === 'True'){
+            let methodEdits = await Method_edits.getAll()
+            let videoEdits = await Videos.getDisplayFalse()
+            let articleEdits = await Articles.getDisplayFalse()
+            res.render('dashboard', {
+                locals: {
+                    methodsEdits: methodEdits,
+                    videos: videoEdits,
+                    articles: articleEdits
+                }
+            })
+        }else{
+            res.redirect('/home')
         }
-    })
+    }else{
+        res.redirect('/home')
+    }
+
+    
 }
 
 async function dashboardMethod(req, res) {

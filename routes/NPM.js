@@ -7,6 +7,6 @@ NPMRoute.get('/', NPMHome);
 
 // NPMRoute.get('/methods', NPMMethods);
 
-// NPMRoute.get('/method/:name', NPMMethodPage)
+NPMRoute.get('/:id', NPMMethodPage)
 
 module.exports = NPMRoute;

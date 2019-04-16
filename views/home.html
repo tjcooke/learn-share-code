@@ -14,26 +14,27 @@
 </head>
 
 <body>
-    <div class="row col-12 d-flex justify-content-between bg-info">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Menu
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/home">Home</a>
-                <a class="dropdown-item" href="/JavaScript">Javascript</a>
-                <a class="dropdown-item" href="/Python">Python</a>
-                <a class="dropdown-item" href="/CSS">CSS</a>
-                <a class="dropdown-item" href="/HTML">HTML</a>
-                <a class="dropdown-item" href="/NPM">NPM</a>
+    <div class="col-12 d-flex justify-content-between bg-info">
+            <div class="dropdown d-flex align-items-center">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menu
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/home">Home</a>
+                    <a class="dropdown-item" href="/JavaScript">Javascript</a>
+                    <a class="dropdown-item" href="/Python">Python</a>
+                    <a class="dropdown-item" href="/CSS">CSS</a>
+                    <a class="dropdown-item" href="/HTML">HTML</a>
+                    <a class="dropdown-item" href="/NPM">NPM</a>
+                </div>
+            </div>
+            <h1>Dashboard</h1>
+            <div class="d-flex align-items-center">
+                <form action="/login" method="GET">
+                <button type="submit" class="btn btn-primary">Login</button>
+                </form>
             </div>
         </div>
-        <h1>Code-lingo</h1>
-        <form action="/login" method="GET">
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-    </div>
     <div class="col-12 d-flex flex-column align-items-center">
         ${news.map((eaNews)=>{
         return `
