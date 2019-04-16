@@ -57,9 +57,8 @@ values
 
     ('JavaScript', 'forEach',
         '.forEach() requires an array, and will call a provided function for each value in that array. function(currentValue, index, arr) It is required to pass this function the currentValue, the other two paramaters are optional.',
-        'const arr = [1, 2, 3, 4, 5]
-arr.forEach(function (numb){
-    console.log(numb)})', 'True'),
+        'const arr = [1, 2, 3, 4, 5] arr.forEach(function (numb)
+            console.log(numb)})', 'True'),
 
     ('Python', 'len', ' len() method takes a list and tells you how many items are in that list',
         'list1 = ["cat","dog","rat","fish","hamster","bird"]
@@ -71,12 +70,7 @@ arr.forEach(function (numb){
 
     ('Python', 'replace', 'The replace() method replaces a specified phrase with another specified phrase.', 'txt "I like bananas" x = txt.replace("bananas", "apples") print(x)', 'True'),
 
-    ('HTML', '<b>', '<b> makes a line of text bold', '
-    <p> lorem ipsum, <b> lorem ipsum, but bolded</b>.<p>', 'True'),
-
-    ('CSS', 'align-content', 'align-content declares the alignment when a bit of text does not take up its full flex container',
-
-        'align-content: center;', 'True'),
+    ('CSS', 'align-content', 'align-content declares the alignment when a bit of text does not take up its full flex container','align-content: center;', 'True'),
     
     ('NPM','access','npm acess is used to set certain access levels to documents wether it is public or private, and read only or edit versions',
     '[user]$ npm access restricted [<superImportantPackage>]','True'),
@@ -86,17 +80,14 @@ arr.forEach(function (numb){
 
     ('NPM','outdated','npm outdated displays all outdated packages you currently have installed','[users]$ npm outdated','True'),
 
-    ('NPM','doctor','npm doctor checks if you have the correct npm installations to manage your JavaScript packages', '[users]$ npm doctor'),
+    ('NPM','doctor','npm doctor checks if you have the correct npm installations to manage your JavaScript packages', '[users]$ npm doctor', 'True'),
 
     ('NPM','install','npm install downloads a package to your local files','[user]$ npm install nodemon','True'),
 
     ('NPM','uninstall','npm uninstall removes a package from your local files',
     '[user]$ npm uninstall nodemon','True'),
 
-        'align-content: center;', 'True'),
-
-    ('CSS', 'background-image', 'The background-image property specifies an image to use as the background of an element. By default, the image is repeated so it covers the entire element.', 'body { background-image: url("paper.gif");
-}', 'True'),
+    ('CSS', 'background-image', 'The background-image property specifies an image to use as the background of an element. By default, the image is repeated so it covers the entire element.', 'body { background-image: url("paper.gif");}', 'True'),
 
     ('CSS', 'margins', 'The CSS margin properties are used to create space around elements, outside of any defined borders. With CSS, you have full control over the margins. There are properties for setting the margin for each side of an element (top, right, bottom, and left).', 'p { margin-top: 100px; margin-bottom: 100px; margin-right: 150px; margin-left: 80px; }', 'True'),
 
