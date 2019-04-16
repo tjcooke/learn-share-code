@@ -2,6 +2,7 @@ const Methods = require('../models/methods');
 const Method_edits = require('../models/method_edits')
 const Articles = require('../models/articles');
 const Videos = require('../models/videos');
+const escapeHTML = require('../utils')
 
 async function HTMLHome(req, res) {
     let HTMLMethods = await Methods.getAll('HTML')
@@ -23,16 +24,17 @@ async function HTMLHome(req, res) {
 
 async function HTMLPost(req, res) {
     const userInput = req.body
+    const breakMethod = escapeHTML(userInput.option2)
     console.log(userInput)
     if (userInput['method-selection'] === 'option1') {
         let theMethodToEdit = await Methods.getByMethod(req.body.option1)
         const userInputKeys = Object.keys(userInput)
 
         if (userInput.description) {
-            theMethodToEdit.description = userInput.description
+            theMethodToEdit.description = escapeHTML(userInput.description)
         }
         if (userInput.snippet) {
-            theMethodToEdit.snippet = userInput.snippet
+            theMethodToEdit.snippet = escapeHTML(userInput.snippet)
         }
 
         await Method_edits.add(theMethodToEdit.id, theMethodToEdit.method, 'HTML', theMethodToEdit.description, theMethodToEdit.snippet, 'False')
@@ -64,15 +66,15 @@ async function HTMLPost(req, res) {
         });
     } else if (userInput['method-selection'] === 'option2') {
         if (userInput.option2) {
-            let response = await Method_edits.add(null, userInput.option2, 'HTML', userInput.description, userInput.snippet, 'False')
+            let response = await Method_edits.add(null, breakMethod, 'HTML', userInput.description, userInput.snippet, 'False')
 
             if (userInput.article) {
-                let response2 = await Articles.add(null, userInput.option2, userInput.article, 'False')
+                let response2 = await Articles.add(null, breakMethod, userInput.article, 'False')
             }
             if (userInput.video) {
                 const embededURL = 'https://www.youtube.com/embed/'
                 const videoURL = embededURL + userInput.video.substring(userInput.video.indexOf('=') + 1, userInput.video.length)
-                await Videos.add(userInput.option2, videoURL, null, 'False')
+                await Videos.add(breakMethod, videoURL, null, 'False')
             }
         }
         let htmlMethods = await Methods.getAll('HTML')
@@ -84,7 +86,7 @@ async function HTMLPost(req, res) {
             locals: {
                 language: 'HTML',
                 methods: htmlMethods,
-                message: `You submited an edit for ${userInput.option2}.`,
+                message: `You submited an edit for ${breakMethod}.`,
                 redirect: "/HTML"
             }
         });
