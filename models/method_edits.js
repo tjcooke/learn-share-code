@@ -40,8 +40,6 @@ class Method_edits {
     static getByMethod(name){
         return db.one(`select * from method_edits where method=$1`,name)
             .then((data)=>{
-
-
                 return new Method_edits(data.id, data.language, data.method_id,data.method, data.description, data.snippet, data.display)
             })
     }
@@ -59,8 +57,8 @@ class Method_edits {
             return null;
         })
     }
-    static delete(name){
-        return db.result('delete from method_edits where method=$1', name);
+    static delete(id){
+        return db.result('delete from method_edits where id=$1', id);
     }
 
 }

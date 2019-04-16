@@ -75,22 +75,33 @@ arr.forEach(function (numb){
     <p> lorem ipsum, <b> lorem ipsum, but bolded</b>.<p>', 'True'),
 
     ('CSS', 'align-content', 'align-content declares the alignment when a bit of text does not take up its full flex container',
-        'align-content: center;', 'True')
+
+        'align-content: center;', 'True'),
     
     ('NPM','access','npm acess is used to set certain access levels to documents wether it is public or private, and read only or edit versions',
-    '[user]$ npm access restricted [<superImportantPackage>]','True')
+    '[user]$ npm access restricted [<superImportantPackage>]','True'),
 
     ('NPM','bin','npm bin shows a NPM bin folder',
-    '[users]$ npm bin','True')
+    '[users]$ npm bin','True'),
 
-    ('NPM','outdated','npm outdated displays all outdated packages you currently have installed','[users]$ npm outdated','True')
+    ('NPM','outdated','npm outdated displays all outdated packages you currently have installed','[users]$ npm outdated','True'),
 
-    ('NPM','doctor','npm doctor checks if you have the correct npm installations to manage your JavaScript packages', '[users]$ npm doctor')
+    ('NPM','doctor','npm doctor checks if you have the correct npm installations to manage your JavaScript packages', '[users]$ npm doctor'),
 
-    ('NPM','install','npm install downloads a package to your local files','[user]$ npm install nodemon','True')
+    ('NPM','install','npm install downloads a package to your local files','[user]$ npm install nodemon','True'),
 
     ('NPM','uninstall','npm uninstall removes a package from your local files',
-    '[user]$ npm uninstall nodemon','True')
+    '[user]$ npm uninstall nodemon','True'),
+
+        'align-content: center;', 'True'),
+
+    ('CSS', 'background-image', 'The background-image property specifies an image to use as the background of an element. By default, the image is repeated so it covers the entire element.', 'body { background-image: url("paper.gif");
+}', 'True'),
+
+    ('CSS', 'margins', 'The CSS margin properties are used to create space around elements, outside of any defined borders. With CSS, you have full control over the margins. There are properties for setting the margin for each side of an element (top, right, bottom, and left).', 'p { margin-top: 100px; margin-bottom: 100px; margin-right: 150px; margin-left: 80px; }', 'True'),
+
+    ('CSS', 'padding', 'The CSS padding properties are used to generate space around an elements content, inside of any defined borders. With CSS, you have full control over the padding. There are properties for setting the padding for each side of an element (top, right, bottom, and left).', 'div { padding-top: 50px padding-right: 30px; padding-bottom: 50px; padding-left: 80px; }', 'True')
+
 ;
 
 insert into articles
