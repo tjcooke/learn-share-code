@@ -17,6 +17,7 @@ const setupAuth = (app) => {
   }, async (accessToken, refreshToken, profile, done) => {
     console.log("++==++=+==+=====++=+==+++")
     console.log(profile)
+    console.log(process.env.client_id)
     return done(null, profile);
     // // TODO: replace this with code that finds the user
     // // in the database.
@@ -34,7 +35,7 @@ const setupAuth = (app) => {
   // #4 call passport.serializeUser
   // This configures how passport turns a user object
   // into something it can track in a session.
-  passport.serializeUser(function(user, done) {
+  passport.serializeUser(function (user, done) {
     // placeholder for custom user serialization
     // null is for errors
     console.log('we are serializing');
@@ -55,7 +56,7 @@ const setupAuth = (app) => {
   // #5 call passport.serializeUser
   // This configures how passport checks what's in the
   // session to see if the login is still valid.
-  passport.deserializeUser(function(id, done) {
+  passport.deserializeUser(function (id, done) {
     console.log('we are deserializing');
     // placeholder for custom user deserialization.
     // maybe you are going to get the user from mongo by id?
@@ -74,7 +75,7 @@ const setupAuth = (app) => {
   // #8 register our login, logout, and auth routes
   app.get('/login', passport.authenticate('github'));
 
-  app.get('/logout', function(req, res, next) {
+  app.get('/logout', function (req, res, next) {
     console.log('logging out');
     req.logout();
     res.redirect('/');
