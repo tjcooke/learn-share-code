@@ -76,6 +76,21 @@ arr.forEach(function (numb){
 
     ('CSS', 'align-content', 'align-content declares the alignment when a bit of text does not take up its full flex container',
         'align-content: center;', 'True')
+    
+    ('NPM','access','npm acess is used to set certain access levels to documents wether it is public or private, and read only or edit versions',
+    '[user]$ npm access restricted [<superImportantPackage>]','True')
+
+    ('NPM','bin','npm bin shows a NPM bin folder',
+    '[users]$ npm bin','True')
+
+    ('NPM','outdated','npm outdated displays all outdated packages you currently have installed','[users]$ npm outdated','True')
+
+    ('NPM','doctor','npm doctor checks if you have the correct npm installations to manage your JavaScript packages', '[users]$ npm doctor')
+
+    ('NPM','install','npm install downloads a package to your local files','[user]$ npm install nodemon','True')
+
+    ('NPM','uninstall','npm uninstall removes a package from your local files',
+    '[user]$ npm uninstall nodemon','True')
 ;
 
 insert into articles
