@@ -1,5 +1,5 @@
 const Methods = require('../models/methods');
-const Method_edits = require('../models/method.edits');
+const Method_edits = require('../models/method_edits');
 const Articles = require('../models/articles');
 const Videos = require('../models/videos');
 
