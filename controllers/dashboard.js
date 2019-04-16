@@ -57,8 +57,8 @@ async function dashboardPost(req, res) {
     }else{
         const newMethod = await Method_edits.getById(methodID)
 
-        const theDescription = null
-        const theSnippet = null
+        let theDescription = null
+        let theSnippet = null
         if (descriptionSelect === 'on') {
             theDescription = description
         } if (snippetSelect === 'on') {
@@ -66,7 +66,9 @@ async function dashboardPost(req, res) {
         }
 
         // add new method to database
-        await Methods.add(newMethod.language, newMethod.method, theDescription, theSnippet, 'True')
+        if(methodNameSelect === 'on'){
+            await Methods.add(newMethod.language, newMethod.method, theDescription, theSnippet, 'True')
+        }
     }
 
     const inputKeys = Object.keys(req.body)
