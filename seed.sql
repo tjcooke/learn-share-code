@@ -54,15 +54,22 @@ values
     ('JavaScript', 'unshift', '.unshift() adds a new item to the beggining of an array',
         'let Animals = ["cow","chicken","sheep","dog",]
     Animals.unshift("doe")', 'True'),
+
     ('JavaScript', 'forEach',
         '.forEach() requires an array, and will call a provided function for each value in that array. function(currentValue, index, arr) It is required to pass this function the currentValue, the other two paramaters are optional.',
         'const arr = [1, 2, 3, 4, 5]
 arr.forEach(function (numb){
-    console.log(numb)
-     })', 'True'),
+    console.log(numb)})', 'True'),
+
     ('Python', 'len', ' len() method takes a list and tells you how many items are in that list',
         'list1 = ["cat","dog","rat","fish","hamster","bird"]
     print(len(list1))', 'True'),
+
+    ('Python', 'upper', 'The upper() method returns a string where all characters are in upper case. Symbols and numbers are ignored.', 'txt = "Hello my friends" x = txt.upper() print(x)', 'True'),
+
+    ('Python', 'lower', 'The lower() method returns a string where all characters are lower case. Symbols and Numbers are ignored.', 'txt = "Hello my FRIENDS" x = txt.lower() print(x)', 'True'),
+
+    ('Python', 'replace', 'The replace() method replaces a specified phrase with another specified phrase.', 'txt "I like bananas" x = txt.replace("bananas", "apples") print(x)', 'True'),
 
     ('HTML', '<b>', '<b> makes a line of text bold', '
     <p> lorem ipsum, <b> lorem ipsum, but bolded</b>.<p>', 'True'),
