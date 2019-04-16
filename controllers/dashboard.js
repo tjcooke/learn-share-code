@@ -3,6 +3,7 @@ const Videos = require('../models/videos')
 const Methods = require('../models/methods')
 const Articles = require('../models/articles')
 
+
 async function dashboardPage(req, res) {
     const clientID = process.env.client_id
 
@@ -41,7 +42,8 @@ async function dashboardMethod(req, res) {
 
 async function dashboardPost(req, res) {
     console.log(req.body)
-    const { methodNameSelect, methodName, descriptionSelect, description, snippetSelect, snippet } = req.body
+    const {methodNameSelect, methodName, descriptionSelect, description, snippetSelect, snippet, methodID} = req.body
+
 
     const theMethod = await Methods.getByMethod(methodName)
     if (theMethod) {
@@ -51,9 +53,10 @@ async function dashboardPost(req, res) {
         if (snippetSelect === 'on') {
             theMethod.snippet = snippet
         }
-        theMethod.save()
-    } else {
-        const newMethod = await Method_edits.getByMethodName(methodName)
+    theMethod.save()
+    }else{
+        const newMethod = await Method_edits.getById(methodID)
+
         const theDescription = null
         const theSnippet = null
         if (descriptionSelect === 'on') {
@@ -67,18 +70,36 @@ async function dashboardPost(req, res) {
     }
 
     const inputKeys = Object.keys(req.body)
-    for (let i = 3; i < inputKeys.length; i++) {
-        if (req.body[`${inputKeys[i]}`] === 'on') {
-            req.body[`${inputKeys[i + 1]}`]
-            let videoID = inputKeys[i + 1].substring(inputKeys[i + 1].indexOf(':') + 1, inputKeys[i + 1].length)
+
+    for (let i = 2; i < inputKeys.length; i++){
+        let videoSelect = inputKeys[i].indexOf('videoSelect')
+        if (videoSelect >= 0){
+            if (req.body[`${inputKeys[i]}`] === 'on'){
+                console.log(inputKeys[i+1])
+                let videoID = inputKeys[i+1].substring(inputKeys[i+1].indexOf(':') + 1, inputKeys[i+1].length)
+                console.log('AWAIT videos.GETBYID(id)')
+                console.log(videoID)
+                let theVideo = await Videos.getById(videoID)
+                theVideo.display = 'True'
+                console.log('SAVING')
+                await theVideo.save()
+            }
+        }
+        if(inputKeys[i].indexOf('videoURL') >= 0){
+            console.log('VIDEO DELETE')
+            let videoID = inputKeys[i].substring(inputKeys[i].indexOf(':') + 1, inputKeys[i].length)
             let theVideo = await Videos.getById(videoID)
-            theVideo.display = 'True'
-            theVideo.save()
+            if (theVideo){
+                if(theVideo.display === 'False'){
+                    await Videos.delete(theVideo.id)
+                }
+        }
         }
     }
-    // remove from database if video display 'False'
-    // remove from method_edits regardless
+    console.log(methodID)
+    await Method_edits.delete(methodID)
     res.redirect('/dashboard')
 }
 
-module.exports = { dashboardPage, dashboardPost, dashboardMethod };
+module.exports =  {dashboardPage, dashboardPost, dashboardMethod} ;
+
