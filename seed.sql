@@ -69,9 +69,6 @@ arr.forEach(function (numb){
 
     ('CSS', 'align-content', 'align-content declares the alignment when a bit of text does not take up its full flex container',
         'align-content: center;', 'True')
-
-
-
 ;
 
 insert into articles
