@@ -99,12 +99,18 @@ async function HTMLPost(req, res) {
 
 async function HTMLMethodPage(req, res) {
     let theMethod = await Methods.getById(req.params.id)
+    console.log('THIS IS THE METHOD')
+    console.log(theMethod)
+    console.log(req.params.id)
     let theVideos = await Videos.getByMethod(req.params.id)
     theVideos = theVideos.filter((eaVideo) => {
         return eaVideo.display === 'True'
     })
     console.log(theVideos)
     if (theMethod) {
+        if(theMethod.description){
+            theMethod.description = escapeHTML(theMethod.description)
+        }
         console.log(theMethod.display)
         if (theMethod.display === 'True') {
             res.render('method', {
