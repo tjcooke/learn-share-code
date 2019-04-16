@@ -59,18 +59,18 @@ values
         'const arr = [1, 2, 3, 4, 5]
 arr.forEach(function (numb){
     console.log(numb)
-     })', 'True')
-    ('Python', 'len', ' len() method takes a list and tells you how many items are in that list', 
-    'list1 = ["cat","dog","rat","fish","hamster","bird"]
-    print(len(list1))','True')
-    
-    ('HTML','<b>', '<b> makes a line of text bold','
-    <p> lorem ipsum, <b> lorem ipsum, but bolded</b>.<p>')
+     })', 'True'),
+    ('Python', 'len', ' len() method takes a list and tells you how many items are in that list',
+        'list1 = ["cat","dog","rat","fish","hamster","bird"]
+    print(len(list1))', 'True'),
 
-    ('CSS','align-content', 'align-content declares the alignment when a bit of text does not take up its full flex container',
-    'align-content: center;','True')
+    ('HTML', '<b>', '<b> makes a line of text bold', '
+    <p> lorem ipsum, <b> lorem ipsum, but bolded</b>.<p>', 'True'),
 
-    ('NPM','')
+    ('CSS', 'align-content', 'align-content declares the alignment when a bit of text does not take up its full flex container',
+        'align-content: center;', 'True')
+
+
 
 ;
 
