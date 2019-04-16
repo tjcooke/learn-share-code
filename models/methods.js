@@ -24,9 +24,10 @@ class Methods {
     static getByMethod(name){
         return db.one(`select * from methods where method=$1`,name)
             .then((data)=>{
-
-
                 return new Methods(data.id, data.language, data.method, data.description, data.snippet, data.display)
+            })
+            .catch(()=>{
+                return null
             })
     }
 
@@ -49,7 +50,7 @@ class Methods {
             language='${this.language}',
             method='${this.method}',
             description='${this.description}',
-            snippet='${this.snippet}',
+            snippet='${this.snippet}'
             where id = ${this.id}
         `)
     }
@@ -59,10 +60,10 @@ class Methods {
         (language, method, description, snippet, display)
         values
         ($1, $2, $3, $4, $5)
-        returning id, first_name
+        returning id
         `, [language, method, description, snippet, display])
         .then((data)=>{
-            return data.id
+            return data
         });
     }
 }

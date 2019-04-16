@@ -62,12 +62,15 @@ class Videos {
         // use .result when you might want a report about 
         // how many rows got affected
         return db.result(`
-        update methods set
+        update videos set
             link='${this.link}',
             method_id='${this.method_id}',
-            display='${this.display}',
+            display='${this.display}'
             where id = ${this.id}
         `)
+    }
+    static delete(ID){
+        return db.result('delete from videos where id=$1', ID);
     }
 }
 
