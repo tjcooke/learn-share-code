@@ -1,6 +1,6 @@
 # Learn-Share-Code
 
->Learn-Share-Code is a full-stack web app written in HTML, Javascript, and CSS. It utilizes Node.js, Express, and PostgreSQL for the backend and Bootstrap for front-end theming.
+Learn-Share-Code is a full-stack web app written in HTML, Javascript, and CSS. It utilizes Node.js, Express, and PostgreSQL for the backend and Bootstrap for front-end theming.
 
 
 ## About Learn-Share-Code
